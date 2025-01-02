@@ -66,6 +66,8 @@
         const gridSize = 4;
         const grid = document.getElementById('grid');
         const feedback = document.getElementById('feedback');
+		const trickies = [0, 2,10, 12,15]
+		const flipped = [[5,10,15], [3],[11,14] , [12]]
 
         // Create the grid
         const gridState = [];
@@ -78,10 +80,12 @@
                 symbolIndex = (symbolIndex + 1) % symbols.length;
                 gridState[i] = symbolIndex;
                 box.textContent = symbols[symbolIndex];
-				if (i == 3) {
-					const nextBox = grid.children[7];
-					if (nextBox) {
-						nextBox.click();
+				if trickies.includes(i){
+					const flippies = flipped[trickies.indexOf(i)]  
+					const nextBox = grid.children[flippies];
+					for ((let n = 0; n < length(nextBox); n++){
+					    if (nextBox[n]) {
+						nextBox[n].click();
 					}
 				}
                 checkWinCondition();
