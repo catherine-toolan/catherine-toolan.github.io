@@ -81,12 +81,13 @@
                 gridState[i] = symbolIndex;
                 box.textContent = symbols[symbolIndex];
 				if (trickies.includes(i)){
-					const flippies = flipped[trickies.indexOf(i)]; 
+					const indices = trickies.indexOf(i);
+					const flippies = flipped[indices]; 
 					flippies.forEach((index) => {
 						const nextBox = grid.children[index];
 						if (nextBox) {
-							gridState[index] = (gridState[index] + 1) % symbols.length;
-							nextBox.textContent = symbols[symbolIndex];
+							gridState[flippies[index]] = (gridState[flippies[index]] + 1) % symbols.length;
+							nextBox.textContent = symbols[gridState[flippies[index]]];
 						}
 					});
 				}
