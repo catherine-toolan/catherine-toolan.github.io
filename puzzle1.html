@@ -63,6 +63,7 @@
 
     <script>
         const symbols = ['\u2605', '\u25A0', '\u25B2', '\u25CF']; // Star, Square, Triangle, Circle
+        const colors = ['blue', 'red', 'green', 'pink']; // Star, Square, Triangle, Circle
         const gridSize = 4;
         const grid = document.getElementById('grid');
         const feedback = document.getElementById('feedback');
@@ -75,10 +76,12 @@
             const box = document.createElement('div');
             let symbolIndex = getRandomArbitrary(0,3.99);
             gridState.push(symbolIndex);
+			box.style.color = colors[symbolIndex];
             box.textContent = symbols[symbolIndex];
             box.addEventListener('click', () => {
                 gridState[i] = (gridState[i] + 1) % symbols.length;
                 box.textContent = symbols[gridState[i]];
+				box.style.color = colors[gridState[i]];
 				if (trickies.includes(i)){
 					const indices = trickies.indexOf(i);
 					const flippies = flipped[indices]; 
@@ -87,6 +90,7 @@
 						if (nextBox) {
 							gridState[index] = (gridState[index] + 1) % symbols.length;
 							nextBox.textContent = symbols[gridState[index]];
+							nextBox.style.color = colors[gridState[i]];
 						}
 					});
 				}
