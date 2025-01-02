@@ -77,9 +77,8 @@
             gridState.push(symbolIndex);
             box.textContent = symbols[symbolIndex];
             box.addEventListener('click', () => {
-                symbolIndex = (symbolIndex + 1) % symbols.length;
-                gridState[i] = symbolIndex;
-                box.textContent = symbols[symbolIndex];
+                gridState[i] = (gridState[i] + 1) % symbols.length;
+                box.textContent = symbols[gridState[i]];
 				if (trickies.includes(i)){
 					const indices = trickies.indexOf(i);
 					const flippies = flipped[indices]; 
