@@ -86,8 +86,8 @@
 					flippies.forEach((index) => {
 						const nextBox = grid.children[index];
 						if (nextBox) {
-							gridState[flippies[index]] = (gridState[flippies[index]] + 1) % symbols.length;
-							nextBox.textContent = symbols[gridState[flippies[index]]];
+							gridState[index] = (gridState[index] + 1) % symbols.length;
+							nextBox.textContent = symbols[gridState[index]];
 						}
 					});
 				}
