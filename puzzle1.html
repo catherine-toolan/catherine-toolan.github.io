@@ -80,14 +80,15 @@
                 symbolIndex = (symbolIndex + 1) % symbols.length;
                 gridState[i] = symbolIndex;
                 box.textContent = symbols[symbolIndex];
-				if trickies.includes(i){
+				if (trickies.includes(i)){
 					const flippies = flipped[trickies.indexOf(i)]; 
-					const nextBox = grid.children[flippies];
-					for ((let n = 0; n < length(nextBox); n++){
-					    if (nextBox[n]) {
-						nextBox[n].click();
-					}
-				}
+					flippies.forEach((index) => {
+						const nextBox = grid.children[index];
+						if (nextBox) {
+							gridState[index] = (gridState[index] + 1) % symbols.length;
+							nextBox.textContent = symbols[symbolIndex];
+						}
+					});
                 checkWinCondition();
             });
             grid.appendChild(box);
