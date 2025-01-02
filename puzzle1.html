@@ -73,7 +73,7 @@
         const gridState = [];
         for (let i = 0; i < gridSize * gridSize; i++) {
             const box = document.createElement('div');
-            let symbolIndex = 0;
+            let symbolIndex = getRandomArbitrary(0,3);
             gridState.push(symbolIndex);
             box.textContent = symbols[symbolIndex];
             box.addEventListener('click', () => {
@@ -105,6 +105,9 @@
                 feedback.textContent = '';
             }
         }
+		
+		function getRandomArbitrary(min, max) {
+			return Math.random() * (max - min) + min;
     </script>
 </body>
 </html>
