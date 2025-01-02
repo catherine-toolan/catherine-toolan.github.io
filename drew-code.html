@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nancy Drew Puzzle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .puzzle {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .puzzle img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 5px;
+        }
+        .question {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .answers {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .answers button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .answers button:hover {
+            background-color: #0056b3;
+        }
+        .feedback {
+            font-size: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="puzzle">
+            <img src="puzzle-clue.jpg" alt="Puzzle clue image">
+        </div>
+        <div class="question">
+            Which object in the image is key to solving the mystery?
+        </div>
+        <div class="answers">
+            <button onclick="checkAnswer('A')">The book</button>
+            <button onclick="checkAnswer('B')">The candle</button>
+            <button onclick="checkAnswer('C')">The key</button>
+            <button onclick="checkAnswer('D')">The painting</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <script>
+        function checkAnswer(choice) {
+            const feedback = document.getElementById('feedback');
+            if (choice === 'C') {
+                feedback.textContent = 'Correct! The key unlocks the next clue.';
+                feedback.style.color = 'green';
+            } else {
+                feedback.textContent = 'Incorrect. Try again!';
+                feedback.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
