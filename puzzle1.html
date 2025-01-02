@@ -78,11 +78,17 @@
                 symbolIndex = (symbolIndex + 1) % symbols.length;
                 gridState[i] = symbolIndex;
                 box.textContent = symbols[symbolIndex];
+				turnOthers(i);
+				if (i == 3) {
+					const nextBox = grid.children[7];
+					if (nextBox) {
+						nextBox.click();
+					}
+				}
                 checkWinCondition();
             });
             grid.appendChild(box);
         }
-
         // Check if all symbols match
         function checkWinCondition() {
             const firstSymbol = gridState[0];
